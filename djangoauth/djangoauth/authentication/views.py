@@ -30,8 +30,5 @@ class AccountViewSet(viewsets.ModelViewSet):
 
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
-        return Response({
-            'status': 'Bad request',
-            'message': 'Account could not be created with received data.'
-        }, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors , status=status.HTTP_400_BAD_REQUEST)
 
